@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "exec": "tsc && node dist/src/main.js",
     "test": "jest"
   },
   "keywords": [],

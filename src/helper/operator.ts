@@ -9,21 +9,30 @@ export const isOperator = (c: string): boolean => {
     return Object.values(OPERATOR).includes(c);
 };
 
-export const isHigherPriorityThanOperator = (c: string, comparison: string): boolean => {
-    // 左結合の定義により演算子が同じなら優先度が高い
-    if (c === comparison) {
-        return true;
-    }
+export const isHigherPriorityThanOperator = (c: string, stackTop: string): boolean => {
 
-    // 演算子とスタックトップがともに+ or -の時、左結合の定義に当てはまる
+    // 左結合の定義
     if (c === OPERATOR.PLUS || c === OPERATOR.SUBTRACT) {
-        if (comparison === OPERATOR.PLUS || comparison === OPERATOR.SUBTRACT) {
+        if (stackTop === OPERATOR.PLUS || stackTop === OPERATOR.SUBTRACT) {
             return true;
         }
     }
 
-    // 演算子が* or /の時、スタックトップがどの演算子でも優先度は高い。
-    // スタックトップが+ or -の時、演算子の優先度の関係
-    // スタックトップが* or /の時、左結合の関係
-    return c === OPERATOR.TIMES || c === OPERATOR.DIVIDED;
+    // 左結合の定義
+    if (c === OPERATOR.TIMES || c === OPERATOR.DIVIDED) {
+        if (stackTop === OPERATOR.TIMES || stackTop === OPERATOR.DIVIDED) {
+            return true;
+        }
+    }
+
+    // 演算子優先度の関係。演算子=>a, スタックトップをbとしたとき、
+    // 演算子の優先度が a < b ならばスタックから全て降ろす。
+    if (c === OPERATOR.PLUS || c === OPERATOR.SUBTRACT) {
+        if (stackTop === OPERATOR.TIMES || stackTop === OPERATOR.DIVIDED) {
+            return true;
+        }
+    }
+
+    // 残りのパターンはスタックに積む。
+    return false;
 };
