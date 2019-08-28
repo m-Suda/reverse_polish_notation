@@ -5,7 +5,7 @@ import { Dist } from './class/Dist';
 const dist: Dist = new Dist([]);
 const stack: Stack = new Stack([]);
 
-const formula: string = "a + b * c + d";
+const formula: string = "a + b + c * d + e / f";
 const formulaArr: string[] = [...formula.replace(/\s/g, '')];
 const FORMULA_LENGTH: number = formulaArr.length;
 
