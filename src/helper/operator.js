@@ -11,4 +11,7 @@ const OPERATOR = {
  * @return {boolean}
  */
 const isOperator = c => Object.values(OPERATOR).includes(c);
+
+
+
 module.exports.isOperator = isOperator;
