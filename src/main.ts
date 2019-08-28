@@ -13,22 +13,24 @@ for (let i = 0; i < FORMULA_LENGTH; i++) {
 
     const char: NumberOfOperationCharacter = new NumberOfOperationCharacter(formulaArr[i]);
 
-    if (char.isOperator()) {
-        if (stack.isEmpty()) {
-            stack.push(char.value);
-            continue;
-        }
-        // 演算子がスタックトップよりも優先度が高ければ、スタックの中身を全て降ろし、その後スタックに積む。
-        if (char.hasHigherPriorityThan(stack.top())) {
-            while (!stack.isEmpty()) {
-                dist.add(stack.pop());
-            }
-        }
+    if (!char.isOperator()) {
+        dist.add(char.value);
+        continue;
+    }
+
+    if (stack.isEmpty()) {
         stack.push(char.value);
         continue;
     }
 
-    dist.add(char.value);
+    // 演算子がスタックトップよりも優先度が高ければ、スタックの中身を全て降ろし、その後スタックに積む。
+    if (char.hasHigherPriorityThan(stack.top())) {
+        while (!stack.isEmpty()) {
+            dist.add(stack.pop());
+        }
+    }
+
+    stack.push(char.value);
 }
 
 // 最後にスタックに積まれた演算子を全て降ろす
