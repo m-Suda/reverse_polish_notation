@@ -10,7 +10,7 @@ export class Stack {
         return this._stack;
     }
 
-    public add(char: string): void {
+    public push(char: string): void {
         this._stack.push(char);
     }
 

@@ -15,7 +15,7 @@ for (let i = 0; i < FORMULA_LENGTH; i++) {
 
     if (char.isOperator()) {
         if (stack.isEmpty()) {
-            stack.add(char.value);
+            stack.push(char.value);
             continue;
         }
         // 演算子がスタックトップよりも優先度が高ければ、スタックの中身を全て降ろし、その後スタックに積む。
@@ -25,7 +25,7 @@ for (let i = 0; i < FORMULA_LENGTH; i++) {
                 dist.add(stackTop);
             }
         }
-        stack.add(char.value);
+        stack.push(char.value);
         continue;
     }
 
