@@ -10,11 +10,7 @@ import {
  */
 export class NumberOfOperationCharacter {
 
-    private _value: string;
-
-    constructor(char: string) {
-        this._value = char;
-    }
+    constructor(private readonly _value: string) { }
 
     public get value(): string {
         return this._value;
