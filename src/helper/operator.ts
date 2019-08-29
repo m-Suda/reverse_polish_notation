@@ -2,7 +2,17 @@ export const OPERATOR = {
     PLUS: '+',
     SUBTRACT: '-',
     TIMES: '*',
-    DIVIDED: '/'
+    DIVIDED: '/',
+    LEFT_BRACKETS: '(',
+    RIGHT_BRACKETS: ')'
+};
+
+export const isLeftBrackets = (c: string): boolean => {
+    return c === OPERATOR.LEFT_BRACKETS;
+};
+
+export const isRightBrackets = (c: string): boolean => {
+    return c === OPERATOR.RIGHT_BRACKETS;
 };
 
 export const isOperator = (c: string): boolean => {

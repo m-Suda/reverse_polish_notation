@@ -1,13 +1,11 @@
+import { isLeftBrackets } from '../helper/operator';
+
 export class Stack {
 
     private _stack: string[];
 
     constructor(stack: string[]) {
         this._stack = stack;
-    }
-
-    public get stack(): string[] {
-        return this._stack;
     }
 
     public push(char: string): void {
@@ -19,11 +17,19 @@ export class Stack {
     }
 
     public top(): string {
-        return this._stack[this._stack.length - 1];
+        return this._stack[this.last()];
+    }
+
+    public topIsLeftBrackets(): boolean {
+        return isLeftBrackets(this._stack[this.last()]);
     }
 
     public pop(): string {
         const top = this._stack.pop();
         return typeof top !== 'undefined'? top : '';
+    }
+
+    private last(): number {
+        return this._stack.length - 1;
     }
 }

@@ -1,6 +1,8 @@
 import {
     isOperator,
-    isHigherPriorityThanOperator
+    isHigherPriorityThanOperator,
+    isLeftBrackets,
+    isRightBrackets
 } from '../helper/operator';
 
 /**
@@ -20,6 +22,14 @@ export class NumberOfOperationCharacter {
 
     public isOperator(): boolean {
         return isOperator(this._value);
+    }
+
+    public isLeftBrackets(): boolean {
+        return isLeftBrackets(this.value);
+    }
+
+    public isRightBrackets(): boolean {
+        return isRightBrackets(this.value);
     }
 
     public hasHigherPriorityThan(stackTop: string) {
