@@ -2,11 +2,7 @@ import { isLeftBrackets } from '../helper/operator';
 
 export class Stack {
 
-    private _stack: string[];
-
-    constructor(stack: string[]) {
-        this._stack = stack;
-    }
+    constructor(private _stack: string[]) { }
 
     public push(char: string): void {
         this._stack.push(char);

@@ -1,10 +1,6 @@
 export class Dist {
 
-    private _list: string[];
-
-    constructor(list: string[]) {
-        this._list = list;
-    }
+    constructor(private _list: string[]) { }
 
     public get list(): string[] {
         return this._list;
